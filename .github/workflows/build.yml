@@ -33,6 +33,8 @@ jobs:
           export ARCH=arm64
           export CROSS_COMPILE=aarch64-linux-gnu-
           make exynos7870-gtaxllte_defconfig
+          scripts/config --file .config --disable CONFIG_TIMA_RKP
+          make olddefconfig
           make -j$(nproc) KCFLAGS="-Wno-error"
 
       - name: Upload Image
